@@ -2,58 +2,268 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Acceso con QR y contraseña</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti 💖</title>
+
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin-top: 60px;
-    }
-    #contenido {
-        display: none;
-        margin-top: 30px;
-        font-size: 18px;
-    }
-    input, button {
-        padding: 10px;
-        font-size: 16px;
-        margin: 5px;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body{
+  min-height:100vh;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ===== FONDO CON CROSSFADE REAL ===== */
+.bg{
+  position:fixed;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  transition:opacity 4s ease-in-out;
+  z-index:-2;
+}
+
+.bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+}
+
+.bg1{opacity:1;}
+.bg2{opacity:0;}
+
+/* ===== LOGIN ===== */
+#login{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.login-box{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  padding:40px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.25);
+  text-align:center;
+}
+
+.login-box input{
+  padding:12px;
+  width:200px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  text-align:center;
+}
+
+.login-box button{
+  margin-top:20px;
+  padding:12px 30px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* ===== CONTENIDO ===== */
+#content{
+  display:none;
+  padding:100px 20px 60px;
+}
+
+.card{
+  max-width:800px;
+  margin:auto;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  border-radius:25px;
+  padding:40px;
+  border:1px solid rgba(255,255,255,0.25);
+  line-height:1.7;
+}
+
+/* ===== CARRUSEL ===== */
+.carousel{
+  margin-top:40px;
+  overflow:hidden;
+}
+
+.track{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+}
+
+.track::-webkit-scrollbar{display:none;}
+
+.slide{
+  min-width:30%;
+  scroll-snap-align:center;
+}
+
+.slide img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:16px;
+}
+
+@media(max-width:768px){
+  .slide{min-width:70%;}
+}
 </style>
 </head>
+
 <body>
 
-<h1>🔒 Acceso privado</h1>
+<!-- FONDO -->
+<div class="bg bg1"></div>
+<div class="bg bg2"></div>
 
-<p>Introduce la contraseña:</p>
+<!-- LOGIN -->
+<div id="login">
+  <div class="login-box">
+    <h2>Introduce la contraseña 💫</h2>
+    <input type="password" id="password">
+    <br>
+    <button onclick="checkPass()">Entrar</button>
+    <p id="error"></p>
+  </div>
+</div>
 
-<input type="password" id="password" placeholder="Contraseña">
+<!-- CONTENIDO -->
+<div id="content">
+  <div class="card">
+    <h1>Para mi mejor amiga 💖</h1>
+
+    💕
+Tus esperados 18.
+hola pequeña, soy la charlotte ya lo sabrás, han llegado tus 18, y no sé si estoy feliz o me quiero tirar por la ventana porque no estoy ahí contigo.
+Empiezo escribiendo esto el 6 de septiembre, un mes desde que me fui a la otra punta del mundo sin llevarme conmigo a la persona que me llevaría hasta a cagar, tu.
+Se que parece que estoy bien, se que no te suelo recordar tanto que te echo de menos, o se que no hablamos todos los días, pero nunca sabía lo que era echar de menos a alguien de verdad hasta el primer dia que me faltaste tú en mi día a día.
+Todo empezó en tercero de la eso, cuando odiaba a mi madre por haberme cambiado de colegio y ahora le agradeceré de por vida haberlo echo.
+Llegamos las dos nuevas, estábamos un poco como que que coño hacemos aquí, tuvimos nuestros momentos humildes yéndonos con marta saiz, pero empezamos a ser tú y yo.
+Nose ni cómo ni porque, la vida nos puso juntas y desde ahí no nos volvió a separar, y es el mejor regalo que me han podido dar.
+Nos empezamos a juntar con los tíos, y desde ahí éramos uña y carne, en pack como los yogures o como dirían otros las dos más guarras de villa, pero siempre siempre las dos juntas a cada lado al que íbamos.
+Si una lloraba la otra también, si una se comía a un feo la otra le superaba, si una era guarra la otra lo era al día siguiente para que nos llamasen así a las dos, si íbamos una sin la otra siempre nos preguntaban que donde estaba la otra que faltaba, conseguimos que todo el mundo nos reconociera como si fuésemos uña y carne, y así fue y lo sigues siendo para mí.
+Sabes mi amistad con gabriela, y que antes de conocerte a ti era lo que consideraba mejor amiga, hasta que llegaste tú y me demostraste todos los días lo que es una amiga de verdad, si se me caía una lágrima al segundo se te caía a ti, si necesitaba ayuda eres la primera y la única persona en la que pensaba, si yo mentía tu jurabas, si yo necesitaba verme con un pavo tú te comías al feo del 2 pa por mi (yo también lo hice por ti🤢), pase lo que pase, siempre tu y yo contra todo y todos, eras mi compañera de vida, y el mejor regalo que me ha dado el colegio.
 <br>
-<button onclick="verificar()">Entrar</button>
+<br>
+Nunca podría pensar que alguien me podía querer de verdad, o que podía ser alguien importante en la vida de otra persona, hasta que llegaste tú, esa personita que con su risa perfecta o sus tonterías me demostraba día si y día también que no soy tan difícil de querer como pensaba, y quiero que sepas que estaré toda mi vida recordándote que tú eres la persona que mas fácil he podido querer en mi vida.
+Se que al principio de todo como que me daba cosa decir que eras mi mejor amiga por el echo de que yo no fuese la tuya, pero lo fuiste desde el primer momento que te empecé a conocer un poquito más, aunque en poco tiempo pasaste de mejor amiga a ser una hermana para mí, y de verdad que no sabes cuánto le agradezco a la vida haberme puesto a alguien como tú.
+<br>
+<br>
+6 octubre, y dos meses sin verle la cara a la niña que a veces me ponía de los nervios y nos acabamos tirando de los pelos, pero que ahora es una de las personas que más echo en falta en mi día a día.
+Creo que algo que siempre he dicho y pensado, es que todo el mundo se da cuenta de lo que tiene cuando lo pierde y eso es un facto increíble, y eres la persona que más me ha echo darme cuenta de eso, porque gracias a dios no te he perdido y espero de verdad no hacerlo nunca, pero teniéndote lejos y sabiendo lo que es vivir sin mi personita más especial todos los días, es algo que jamás habría pensado que iba a echar tanto en falta hasta que me ha tocado vivirlo.
+Te lo juro, tus risas, tus tonterías, tus insultos para meterte conmigo, tus miles de consejos escuchándome hablar siempre de lo mismo, nuestras charlas nocturnas tumbadas en tu cama hasta las 6 de la mañana, el fingir que estábamos dormidas cuando entraba tú madre, el poder reírme de alguien o meterme con alguien y saber que NUNCA me ibas a criticar, sino que tú también te ibas a meter con esa persona el triple que yo. 
+No puedo pensar en ningún recuerdo bueno de mi adolescencia sin que tú estés, has estado en mi relación interminable con koke, mientras tanto empezó junior, que nos proponíamos fechas para aguantar las dos lo mismo con ellos (ahora que lo pienso que hijas de puta😆), los 20 pavos de sudadera de besitos que estuvimos una semana haciendo la puta sudadera de los huevos para que te la acabará devolviendo y el mío ni la toco.
+Depues pasamos a sacha, y en verdad, el mejor dos pa que me he echo en la vida.
+Estar un mes saliendo todos los días a comer y saltarnos última para poder ver a dos niños mocos que no nos querían una mierda, pero que desgraciadamente nosotras les queríamos más de lo que se merecían. Que nos acabaran pillando y quedarnos hasta las 5 de la tarde en el colegio haciendo una redacción, la cual nadie leyó nunca y encima estaba mal porque había que hacer dos, y si podía ser sin usar chati (cosa dificl en nosotras). 
+Pero lo importante de todo eso y lo que quiero decir es, que éramos las dos juntas contra todo, que si a una se le ocurría la peor idea del mundo, la otra iba a estar ahí para decir que es una idea increíble, hacerla y acabar arrepintiéndonos casi siempre.
+Y no sabes lo que me hace falta tener a alguien así aquí, básicamente tenerte a ti, poder saltarme clase y que nadie piense que soy una maleante, simplemente quiero ir a nuestro coche a hablar de la vida con mi niña favorita, poder fumar y que nadie se piense que soy drogadicta, poder criticar a alguien sin que se piensen que soy mala persona… simplemente tú y solo tú, es lo único que necesitaría ahora mismo.
+<br>
+<br>
+6 de noviembre, poquito para mi cumple pero ya tres meses aquí, y día si y día también echándote de menos.
+Gracias carla, gracias por haber conseguido que seas tan especial para mí, que hasta estando en la otra punta del mundo a cada plan al que voy siempre pienso, esto sería mucho mejor si estuviese mi rubia aquí.
+Y quiero dejarte muy claro también lo mucho que te quiero yo, que nunca en tu vida se te ocurra dudar en acudir a mi siempre que lo necesites, que mi hombro será el primero que tendrás para llorar, que siempre te diré si la cagas, pero siempre estaré de tu parte y siempre te ayudaré a arreglar todo. Creo que lo sabes, pero no puedo soportar verte mal, si te hacen daño a ti me duele incluso más que si me lo hicieran a mi, que prefiero que me destrocen a mi la vida si hace falta, pero que a mí pequeña no la toquen ni un pelo, y nadie la haga soltar ni una sola lágrima porque ahí estaré yo para defenderte ante todo.
+Gracias de verdad, porque gracias a ti se lo que es querer incondicionalmente a alguien, y que suerte he tenido en la vida para que me den la mejor amistad que me ha podido tocar, y quiero que sepas que intentaré cuidarla siempre para tener 80 años y seguir tomándome cafés (o cubatas) con mi niña favorita en el mundo.
+<br>
+<br>
+6 de diciembre, ya van cuatro meses aquí.
+Se que por muchas palabras que te diga y muchísimas acciones nada tendrá tanto valor para devolverte todo lo que has echo por mi y lo quería y especial que me has echo sentir toda la vida.
+Antes de irte a francia, el finde de terminar tus exámenes, hicimos una llamada que de verdad me hizo pensar mucho.
+Te dije que hoy en día se llama mejor amiga a cualquier persona con la que te lleves bien, sin entender realmente el significado de mejor amiga, pero si la vida nos puso juntas, precisamente era para eso, para enseñarnos lo que es de verdad una mejor amiga.
+Que se me pone una sonrisa en la cara siempre que me mencionan tu nombre o me vienes tú a la cabeza, porque me has demostrado tanto y me has echo quererte tanto, que uno de los regalos más bonitos en la vida, es tener una persona que sabes que pondría la mano en el fuego por ti, y de la que estar 100% segura que nunca nunca va a fallarte, y esa eres tú para mí.
+Podemos tener nuestros mini enfados, pero de algo que me has echo estar muy segura, es que siempre vas a querer solucionarlo conmigo y siempre vamos a querer vernos las dos juntas por encima de todo y de todos.
+Que pasen las personas que pasen, las amistades que pasen y todo lo que quiera meterse entre nosotras dos, nunca haría que nos separemos y que seamos esas dos niñas locas que quieren vivir su adolescencia y ojalá toda la vida juntas.
+Pero quiero hacerte ver también lo que significas para mí.
+Todo el mundo hemos pasado por algún momento en nuestra vida que nos queremos morir, que no encontramos sentido a nada y pensamos que no hay persona para nosotros, y ahí estabas tú, mi luz al final del túnel como suelen decir, o mi luz todos los días de mi vida, la única que persona que me da un poquito de esperanza cuando creo que ya nada la tiene, y quiero que te quede claro, que siempre estaré ahí para ser la tuya.
+Que siempre podré ser la primera persona a la que llames cuando necesites algo, que siempre vas a tener mi hombro para llorar juntas, que todo lo que te pase a ti es como si me pasara a mi, ya lo sabes, cualquiera que le haga un mínimo daño a mi pequeña, que no dude que estaré yo ahí al minuto porque me duele el triple que si me lo hicieran a mi, y que si el mundo se pone en contra de ti yo no dudaría ni un segundo en ponerme en contra de todo el mundo para defenderte a ti, porque siempre me pregunto si algún día voy a encontrar al amor de mi vida de verdad (aunque sigo diciendo que es koke), pero para mí tú eres el amor de mi vida en forma de amistad, mi media naranja, mi niña más especial.
+ <br>
+ <br>
+6 de enero, y ya queda menos de un mes para tu día especial pequeña.
+Escribo esto un poquito mal, echo de menos españa y encima todo está bastante mal con koke, pero algo que me ha echo darme mucha cuenta, es de lo mucho que puede influir alguien en la vida de otra persona para bien, y de lo mucho que puedes necesitar a alguien cuando sientes que nada tiene sentido, y tú eres ese alguien para mi.
+No te imaginarías lo que pagaría ahora mismo por poder escuchar tu risa aunque sea una vez, tus tonterías y que me recuerdes que no todo es tan malo como parece si te tengo a ti al lado.
+Eres increíble carla, te lo digo a ti y se lo digo a cada persona que me pregunte por ti, no te imaginas lo afortunada que soy de verdad de tener a alguien como tú en mi vida, eres mi regalo más bonito.
+Te echo de menos, te echo de menos cada día más, te prometo que no sabes lo mucho que necesito darte un abrazo, pero ahora y en cada momento de mi vida, estando feliz triste enfadada o borracha, eres la niña que más necesito en el mundo.
+Y me daba miedo, me daba miedo que empezases tu vida en españa sin mí y que cuando vuelva nuestra relación no sea la misma que era antes de que me fuera, pero pondría mi vida entera en el fuego por que eso no va a ser así, porque cada vez que me llamas sigo sintiendo que estoy hablando con mi niña favorita y se que nada ni nadie puede hacer que eso cambie, y ojalá pienses tú lo mismo.
+Te quiero con toda mi alma carla, ojalá estes siendo muy feliz mi niña te lo mereces.
+<br>
+<br>
+3 de febrero, y llegó tu día más esperado del año y el mío aún más.
+No sabes lo triste que estoy mi niña, me duele en el alma no poder estar ahí, pero sé que sabes que a donde sea que vayas siempre va a estar la pesada de carlota siguiéndote, asique aunque no me veas ahí, siempre estaré contigo en cada paso que des en la vida.
+Creo que ya te lo he dicho todo, y si quieres un pequeño resumen, que eres la amistad que más me ha marcado en la vida, y como te prometí un día pienso cumplirlo, algún día estarás en mi piel, porque en mi corazón ya estás para siempre.
+Disfruta muchísimo de este día pequeña, no puedo estar más feliz por ti, olvídate de todo lo malo, y sonríe, que todo es mejor viendo a la niña con la sonrisa más bonita del mundo reírse, y no dejes que nada ni nadie te la quite.
+Te quiero con toda mi alma carla, nunca te olvides de mi y nos veremos dentro de muy poquito, eres la mejor niña que ha pasado por mi vida, no sabes cuando te echo en falta.
+Siempre tú y yo, mi persona favorita.💕
+    <p>💕 tus esperados 18... </p>
 
-<p id="error" style="color:red;"></p>
-
-<div id="contenido">
-    <h2>✅ Acceso concedido</h2>
-    <p>
-        Este es el texto secreto que solo se ve después de poner la contraseña.
-        <br><br>
-        🎉 ¡Funciona!
-    </p>
+    <div class="carousel">
+      <div class="track" id="carousel"></div>
+    </div>
+  </div>
 </div>
 
 <script>
-    const PASSWORD_CORRECTA = "1234"; // ← cambia esto
+/* ===== IMÁGENES ===== */
+const images = [
+  "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg",
+  "6.jpg","7.jpg","8.jpg","9.jpg","10.jpg",
+  "11.jpg","12.jpg","13.jpg"
+];
 
-    function verificar() {
-        const pass = document.getElementById("password").value;
-        if (pass === PASSWORD_CORRECTA) {
-            document.getElementById("contenido").style.display = "block";
-            document.getElementById("error").textContent = "";
-        } else {
-            document.getElementById("error").textContent = "Contraseña incorrecta";
-        }
-    }
+let index = 0;
+let showingBg1 = true;
+
+const bg1 = document.querySelector(".bg1");
+const bg2 = document.querySelector(".bg2");
+
+bg1.style.backgroundImage = `url(${images[0]})`;
+
+/* ===== FONDO AUTOMÁTICO ===== */
+setInterval(() => {
+  index = (index + 1) % images.length;
+
+  if(showingBg1){
+    bg2.style.backgroundImage = `url(${images[index]})`;
+    bg2.style.opacity = 1;
+    bg1.style.opacity = 0;
+  }else{
+    bg1.style.backgroundImage = `url(${images[index]})`;
+    bg1.style.opacity = 1;
+    bg2.style.opacity = 0;
+  }
+
+  showingBg1 = !showingBg1;
+}, 9000);
+
+/* ===== LOGIN ===== */
+function checkPass(){
+  if(password.value === "2pa2"){
+    login.style.display="none";
+    content.style.display="block";
+  }else{
+    error.textContent="Esa no es 😌";
+  }
+}
+
+/* ===== CARRUSEL ===== */
+const carousel = document.getElementById("carousel");
+images.forEach(src=>{
+  const div = document.createElement("div");
+  div.className="slide";
+  div.innerHTML = `<img src="${src}">`;
+  carousel.appendChild(div);
+});
 </script>
 
 </body>
